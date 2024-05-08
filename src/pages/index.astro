@@ -1,0 +1,23 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Hero from "../components/Hero.astro";
+import InSession from "../components/Session.astro";
+import { getSession } from "auth-astro/server";
+const session = await getSession(Astro.request);
+---
+
+<Layout title="Your Notepad | Definitive">
+	<Header />
+	{
+		session ? (
+			<>
+				<InSession />
+			</>
+		) : (
+			<>
+				<Hero />
+			</>
+		)
+	}
+</Layout>

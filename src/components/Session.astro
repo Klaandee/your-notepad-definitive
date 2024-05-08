@@ -1,0 +1,44 @@
+---
+import { getSession } from "auth-astro/server";
+const session = await getSession(Astro.request);
+---
+
+<!-- Cuando el usuario esta en sesion -->
+<section class="text-white mt-6">
+{
+    session ? (
+        <>
+            <h1 class="text-center text-6xl font-bold">Hola <b class="text-gray-500">{session.user?.name}</b>!</h1>
+            <div class="text-center">
+                <h2 class="text-3xl font-bold mt-2">Your Notepad</h2>
+            <div>
+                <textarea id="noteTextArea" placeholder="Typing here.."></textarea>
+            </div>
+                <button id="saveNoteBtn" class="bg-gray-700 rounded-2xl text-2xl font-bold mt-2 hover:bg-gray-800" style="padding: 3px 20px;box-shadow: 0px 0px 5px rgb(55 65 81);" title="Save Note">Save Note</button>
+            </div>
+        </>
+    ) : (
+        <></>
+    )
+}
+</section>
+
+<!-- CSS -->
+<style>
+    section {
+        font-family: "Poppins", sans-serif;
+    }
+    textarea {
+        margin-top: .80rem;
+        resize: none;
+        color: #606060;
+        box-shadow: 0px 0px 10px #fff;
+        min-width: 30rem;
+        min-height: 10rem;
+        border-radius: 20px;
+        padding: 1rem;
+    }
+    textarea:focus {
+        outline: none;
+    }
+</style>
