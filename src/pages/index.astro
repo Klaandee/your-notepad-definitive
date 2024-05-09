@@ -3,6 +3,8 @@ import Layout from "../layouts/Layout.astro";
 import Header from "../components/Header.astro";
 import Hero from "../components/Hero.astro";
 import InSession from "../components/Session.astro";
+import Footer from "../components/Footer.astro";
+
 import { getSession } from "auth-astro/server";
 const session = await getSession(Astro.request);
 ---
@@ -20,4 +22,5 @@ const session = await getSession(Astro.request);
 			</>
 		)
 	}
+	<!-- <Footer /> -->
 </Layout>
