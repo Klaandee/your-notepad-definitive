@@ -1,0 +1,31 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+
+import { getSession } from "auth-astro/server";
+const session = await getSession(Astro.request);
+---
+
+<Layout title="Your Notepad | Typing">
+    <Header />
+    {
+        session ? (
+            <>
+                <h1 style="font-family: 'Poppins', sans-serif;text-shadow: 0px 0px 5px #fff;" class="text-white p-6 text-4xl font-semibold">
+                    You are already in a session, we are going to redirect you
+                    to your notepad.
+                </h1>
+                <script>
+                    let url = "/";
+                    let time = 3000;
+                    function redirect() {
+                       window.location.href = url;
+                    }
+                    setTimeout(redirect, time);
+                </script>
+            </>
+        ) : (
+            <></>
+        )
+    }
+</Layout>
