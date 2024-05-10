@@ -5,22 +5,43 @@ const session = await getSession(Astro.request);
 
 <!-- Cuando el usuario esta en sesion -->
 <section class="text-white mt-6">
-{
-    session ? (
-        <>
-            <h1 class="text-center text-6xl font-bold">Hola <b class="text-gray-500">{session.user?.name}</b>!</h1>
-            <div class="text-center">
-                <h2 class="text-3xl font-bold mt-2">Your Notepad</h2>
-            <div>
-                <textarea id="noteTextArea" placeholder="Typing here.."></textarea>
-            </div>
-                <button id="saveNoteBtn" class="bg-gray-700 rounded-2xl text-2xl font-bold mt-2 hover:bg-gray-800" style="padding: 3px 20px;box-shadow: 0px 0px 5px rgb(55 65 81);" title="Save Note">Save Note</button>
-            </div>
-        </>
-    ) : (
-        <></>
-    )
-}
+    {
+        session ? (
+            <>
+                <h1 class="text-center text-6xl font-bold">
+                    Hola <b class="text-gray-500">{session.user?.name}</b>!
+                </h1>
+                <div class="text-center">
+                    <h2 class="text-3xl font-bold mt-2">Your Notepad</h2>
+                    <div>
+                        <textarea
+                            id="noteTextArea"
+                            placeholder="Typing here.."
+                        />
+                    </div>
+                    <button
+                        id="saveNoteBtn"
+                        class="bg-gray-700 rounded-2xl text-2xl font-bold mt-2 hover:bg-gray-800"
+                        style="padding: 3px 20px;box-shadow: 0px 0px 5px rgb(55 65 81);"
+                        title="Save Note"
+                    >
+                        Save Note
+                    </button>
+                </div>
+                <div class="flex justify-center">
+                    <p class="text-center mt-4 text-gray-400" style="max-width: 30rem;">
+                        This part of the page is not yet working, it is
+                        recommended to use the one that appears at the top of
+                        the page "Notepad"
+                    </p>
+                </div>
+            </>
+        ) : (
+            <>
+                <h1 class="p-6 text-4xl">Acaba de ocurrir un error..</h1>
+            </>
+        )
+    }
 </section>
 
 <!-- CSS -->
@@ -29,7 +50,7 @@ const session = await getSession(Astro.request);
         font-family: "Poppins", sans-serif;
     }
     textarea {
-        margin-top: .80rem;
+        margin-top: 0.8rem;
         resize: none;
         color: #606060;
         box-shadow: 0px 0px 10px #fff;
