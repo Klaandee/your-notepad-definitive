@@ -1,4 +1,5 @@
 ---
+import Button from "../components/Button.astro";
 import { SignIn, SignOut } from "auth-astro/components";
 import { getSession } from "auth-astro/server";
 const session = await getSession(Astro.request);
@@ -30,21 +31,26 @@ const session = await getSession(Astro.request);
                     </>
                 ) : (
                     <>
-                        <SignIn
-                            provider="google"
-                            class="rounded-2xl text-white bg-blue-900 font-bold text-2xl mt-1 hover:bg-transparent"
-                            style="padding: 2px 30px;box-shadow: 0px 0px 5px rgb(30 58 138);border: 2px solid rgb(30 58 138);transition: .7s ease-out;"
-                            title="Log In"
-                        >
-                            Log In
-                        </SignIn>
+                        <div class="flex gap-6">
+                            <SignIn
+                                provider="google"
+                                class="rounded-2xl text-white bg-blue-900 font-bold text-2xl mt-1 hover:bg-transparent"
+                                style="padding: 2px 30px;box-shadow: 0px 0px 5px rgb(30 58 138);border: 2px solid rgb(30 58 138);transition: .7s ease-out;"
+                                title="Log In"
+                            >
+                                Log In
+                            </SignIn>
+                            <Button
+                                btntitle="Go to notepad"
+                                bg="bg-gray-500"
+                                textcolor="text-white"
+                            >
+                                Notepad
+                            </Button>
+                        </div>
                     </>
                 )
             }
-            <button
-                class="rounded-2xl text-white bg-red-900 font-bold text-2xl mt-1 hover:bg-transparent"
-                style="padding: 2px 30px;box-shadow: 0px 0px 5px rgb(127 29 29);border: 2px solid rgb(127 29 29);transition: .7s ease-out;"
-                title="Sign Out">Notepad</button>
         </div>
     </div>
 </header>

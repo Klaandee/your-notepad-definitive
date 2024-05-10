@@ -1,0 +1,13 @@
+---
+const { btntitle, bg, textcolor, link } = Astro.props;
+---
+
+<a href={link}>
+    <button
+        class=`rounded-2xl ${textcolor} ${bg} font-bold text-2xl mt-1 hover:bg-transparent`
+        style="padding: 2px 30px;box-shadow: 0px 0px 5px rgb(107 114 128);border: 2px solid rgb(107 114 128);transition: .7s ease-out;"
+        title={btntitle}
+    >
+        <slot />
+    </button>
+</ahr>
