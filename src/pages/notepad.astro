@@ -6,6 +6,7 @@ import { getSession } from "auth-astro/server";
 const session = await getSession(Astro.request);
 ---
 
+<!-- Notepad Page -->
 <Layout title="Your Notepad | Typing">
     <Header />
     {
@@ -25,7 +26,104 @@ const session = await getSession(Astro.request);
                 </script>
             </>
         ) : (
-            <></>
+            <>
+            <section class="text-center" style="font-family: 'Poppins', sans-serif;">
+                <h1 class="text-6xl font-bold mt-2 text-white">
+                    <b class="text-blue-200">¡</b>Notepad<b class="text-blue-200">!</b>
+                </h1>
+                <p class="text-white mt-2">Save your notes here, safe and efficient</p>
+                <div id="error"></div>
+                <div class="mt-2">
+                    <textarea
+                        id="noteTextArea"
+                        placeholder="Typing here.."
+                    />
+                </div>
+                <button
+                    id="saveNoteBtn"
+                    class="bg-gray-700 rounded-2xl text-2xl font-bold mt-2 hover:bg-gray-800 text-white"
+                    style="padding: 3px 20px;box-shadow: 0px 0px 5px rgb(55 65 81);"
+                    title="Save Note"
+                >
+                    Save Note
+                </button>
+                <div class="saveItems">
+                    <ul id="noteList" title="Click to edit."></ul>
+                </div>
+            </section>
+            </>
         )
     }
 </Layout>
+
+<!-- CSS -->
+<style>
+    textarea {
+        margin-top: 0.8rem;
+        resize: none;
+        color: #606060;
+        box-shadow: 0px 0px 10px #fff;
+        min-width: 30rem;
+        min-height: 10rem;
+        border-radius: 20px;
+        padding: 1rem;
+    }
+    textarea:focus {
+        outline: none;
+    }
+    .noteItem {
+        padding: 10px;
+        position: relative;
+        word-wrap: break-word;
+        /* max-width: 80rem; */
+        cursor: pointer;
+   }  
+
+    .noteItem:hover {
+        border-radius: 10px;
+        background: #fff;
+    }
+
+    .noteItem.selected .deleteButton,
+.noteItem.selected .editButton {
+    display: block;
+}
+
+#noteList {
+    list-style-type: none;
+    padding: 0;
+    max-width: 50rem;
+}
+
+.editArea {
+    display: none;
+    margin-top: 1rem;
+}
+
+#editContent {
+    font-family: monospace, sans-serif;
+    font-weight: bold;
+    border: 2px solid #8f8f8f;
+    width: 30rem;
+    height: 10rem;
+    resize: none;
+    padding: 10px 10px;
+    border-radius: 10px;
+    color: #747474;
+}
+
+#editContent:focus {
+    outline: none;
+}
+
+#deleteButton, #updateButton, #cancelButton {
+    padding: 3px 10px;
+    border: none;
+    border: 1px solid #8080803d;
+    border-radius: 10px;
+    font-family: sans-serif;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+</style>
